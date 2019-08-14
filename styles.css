@@ -1,0 +1,33 @@
+#container{
+    width: 400px;
+    flex-direction:row;
+    display: flex;
+    background-color: yellow;
+}
+#display{
+    width: 400px;
+    height: 50px;
+    background-color: maroon;
+}
+#numbers{
+    width: 300px;
+    background-color: aquamarine;
+    display: flex;
+    flex-flow: wrap;
+}
+button{
+    width: 100px;
+    height: 100px;
+    background-color:white;
+}
+
+#operators{
+    display: flex;
+    flex-flow: wrap;
+    width:100px;
+}
+
+.ops{
+    height:80px;
+    width:100px;
+}
