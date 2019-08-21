@@ -32,3 +32,39 @@ function operatoe(opp, a, b) {
             break;
     }
 }
+
+window.onload = () => {
+    initBtns();
+
+}
+
+function initBtns() {
+    const btns = document.querySelectorAll('.showOnDisplay');
+    btns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            if (display.textContent== "0") {
+                display.textContent = btn.textContent;
+            }
+            else {
+                display.textContent += btn.textContent;
+            }
+
+        });
+    });
+    var del = document.querySelector('#del');
+        del.addEventListener('click', () => {
+            display.textContent = '0';
+        })
+    var solve = document.querySelector('#solve');
+        solve.addEventListener('click', ()=>{
+            a = display.textContent.split()
+        })
+}
+
+var activeCount = []
+var count = 0;
+var counting = false;
+var display = document.querySelector('#display');
+display.textContent = count;
+
+

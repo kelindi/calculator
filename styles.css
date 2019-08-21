@@ -1,33 +1,37 @@
-#container{
+#container {
     width: 400px;
-    flex-direction:row;
+    flex-direction: row;
     display: flex;
     background-color: yellow;
 }
-#display{
+
+#display {
     width: 400px;
     height: 50px;
-    background-color: maroon;
+    font-size: 32px;
+    background-color: whitesmoke;
 }
-#numbers{
+
+#numbers {
     width: 300px;
     background-color: aquamarine;
     display: flex;
     flex-flow: wrap;
 }
-button{
+
+button {
     width: 100px;
     height: 100px;
-    background-color:white;
+    background-color: white;
 }
 
-#operators{
+#operators {
     display: flex;
     flex-flow: wrap;
-    width:100px;
+    width: 100px;
 }
 
-.ops{
-    height:80px;
-    width:100px;
+.ops {
+    height: 80px;
+    width: 100px;
 }
