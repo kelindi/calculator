@@ -51,15 +51,25 @@ function initBtns() {
     const btns = document.querySelectorAll('.showOnDisplay');
     btns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
-            if (display.textContent == "0"){
-                display.textContent = btn.textContent;
-                equation = btn.dataset.value;
+            if (isCurrInputOp(btn)) {
+                if (isPrevInputOp()) {
+                    return
+                }
+                else{
+                    display.textContent += btn.textContent;
+                    equation += btn.dataset.value;
+                }
             }
             else {
-                display.textContent += btn.textContent;
-                equation += btn.dataset.value;
+                if (display.textContent == "0") {
+                    display.textContent = btn.textContent;
+                    equation = btn.dataset.value;
+                }
+                else {
+                    display.textContent += btn.textContent;
+                    equation += btn.dataset.value;
+                }
             }
-
 
         });
     });
@@ -103,3 +113,27 @@ function calculateStr(equationStr) {
         return a;
     }
 }
+
+// checks if the previous input was an operator
+function isPrevInputOp() {
+    a = display.textContent.split('a');
+    b = a.pop();
+    if (b == '+' || b == '-' || b == 'x' || b == '&divide') {
+        return true;
+    }
+    else {
+        return false;
+    }
+
+}
+
+//checks if the current input is an operator
+function isCurrInputOp(btn) {
+    if (btn.classList.contains('ops')) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
