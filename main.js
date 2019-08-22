@@ -1,3 +1,4 @@
+/*
 function add(a, b) {
     return a + b;
 }
@@ -14,7 +15,7 @@ function divide(a, b) {
     return a / b;
 }
 
-function operatoe(opp, a, b) {
+function operate(opp, a, b) {
     switch (opp) {
         case add:
             add(a, b);
@@ -32,6 +33,12 @@ function operatoe(opp, a, b) {
             break;
     }
 }
+*/
+
+//init global variables
+var display = document.querySelector('#display');
+display.textContent = '0';
+var equation = '0';
 
 window.onload = () => {
     initBtns();
@@ -39,32 +46,60 @@ window.onload = () => {
 }
 
 function initBtns() {
+
+    //initialize the number and operator buttons
     const btns = document.querySelectorAll('.showOnDisplay');
     btns.forEach((btn) => {
         btn.addEventListener('click', (e) => {
-            if (display.textContent== "0") {
+            if (display.textContent == "0"){
                 display.textContent = btn.textContent;
+                equation = btn.dataset.value;
             }
             else {
                 display.textContent += btn.textContent;
+                equation += btn.dataset.value;
             }
+
 
         });
     });
+
+    //initializethe delete button
     var del = document.querySelector('#del');
-        del.addEventListener('click', () => {
-            display.textContent = '0';
-        })
+    del.addEventListener('click', () => {
+        display.textContent = '0';
+        equation = '0';
+    })
+
+    // initialize the the solve button
     var solve = document.querySelector('#solve');
-        solve.addEventListener('click', ()=>{
-            a = display.textContent.split()
-        })
+    solve.addEventListener('click', () => {
+        // a = display.textContent.split('');
+        a = calculateStr(equation);
+        display.textContent = a;
+    })
+
+    //initialize the decimal button
+    const decimal = document.querySelector("#decimal")
+    decimal.addEventListener('click', () => {
+        if (!equation.includes(".")) {
+            display.textContent += decimal.textContent;
+            equation += decimal.dataset.value;
+        }
+    })
+
 }
 
-var activeCount = []
-var count = 0;
-var counting = false;
-var display = document.querySelector('#display');
-display.textContent = count;
+//solves the equation
+function calculateStr(equationStr) {
+    //a = the answer to the equation
+    a = new Function('return ' + equationStr)();
 
-
+    //divide by zero check
+    if (a == 'Infinity') {
+        return 'Undefined';
+    }
+    else {
+        return a;
+    }
+}
