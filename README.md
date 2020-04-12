@@ -5,4 +5,4 @@ A simple calculator that lets you add, subtract, divide, and multiply
 * How to debug javascript
 * CSS centering techniques
 
-## Demo: [live page](https://shantorian.github.io/calculator/)
+## Demo: [live page](https://kelindi.github.io/calculator/)
